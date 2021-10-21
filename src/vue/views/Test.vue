@@ -21,7 +21,7 @@
 <script>
     import $ from 'jquery'
     import { onUnmounted } from 'vue'
-    import * as xrpl from 'xrpl'
+    import { Client } from 'xrpl'
 
     export default {
         name: "Test",

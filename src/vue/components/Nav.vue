@@ -11,12 +11,12 @@
                 </router-link>
                 <div class="nav_list">
                     <router-link :to="routes[1].path" class="nav_link" :title="routes[1].name" :class="{ active: isActive(routes[1].path) }">
-                        <i class="bx bx-trip nav_icon" v-if="routes[1].path === '/monitor'"></i> <span class="nav_name">Monitor</span>
-                        {{ routes[1].path !== "/monitor" ? routes[1].name : "" }}
+                        <i class="bx bx-x nav_icon" v-if="routes[1].path === '/xrpl'"></i> <span class="nav_name">XRPL</span>
+                        {{ routes[1].path !== "/xrpl" ? routes[1].name : "" }}
                     </router-link>
                     <router-link :to="routes[2].path" class="nav_link" :title="routes[2].name" :class="{ active: isActive(routes[2].path) }">
-                        <i class="bx bx-x nav_icon" v-if="routes[2].path === '/xrpl'"></i> <span class="nav_name">XRPL</span>
-                        {{ routes[2].path !== "/xrpl" ? routes[2].name : "" }}
+                        <i class="bx bx-trip nav_icon" v-if="routes[2].path === '/test'"></i> <span class="nav_name">Test</span>
+                        {{ routes[2].path !== "/test" ? routes[2].name : "" }}
                     </router-link>
                 </div>
             </div> 
