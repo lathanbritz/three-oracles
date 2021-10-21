@@ -21,7 +21,7 @@
 <script>
     import $ from 'jquery'
     import { onUnmounted } from 'vue'
-    import { Client } from 'xrpl'
+    import * as xrpl from 'xrpl'
 
     export default {
         name: "Test",
@@ -39,7 +39,7 @@
             console.log('connecting')
             await client.connect()
             console.log('connected')
-            const this.data = await client.request({command: 'server_info'})
+            this.data = await client.request({command: 'server_info'})
             console.log(this.data)
             console.log('disconnecting')
             await client.disconnect()
