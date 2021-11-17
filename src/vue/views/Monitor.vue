@@ -16,6 +16,8 @@
                 <h2>Oracle signals</h2>
                 <p>Clone, deploy, configure. Your own oracle today.</p>
                 <p>Libraries and services.</p>
+                <br/>
+                <p><strong>THIS SITE IS UNDER COMPLETE DEVELOPMENT AT THE MOMENT!</strong></p>
                 <button class="btn btn-outline-light" type="button">Get Started</button>
             </div>
         </div>
