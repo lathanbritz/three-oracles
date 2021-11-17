@@ -76,7 +76,7 @@
             }
         },
         async mounted() {
-            socket = new WebSocket('ws://localhost:5000')
+            socket = new WebSocket('ws://65.21.226.245:5000')
             this.connectWebsocket()
         },
         methods : {
