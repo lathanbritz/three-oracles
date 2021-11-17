@@ -12,7 +12,7 @@
 
     <div class="row align-items-md-stretch">
         <div class="col-md-6">
-            <div class="h-100 p-5 text-white bg-dark rounded-3">
+            <div class="h-100 p-5 rounded-3">
                 <h2>Oracle signals</h2>
                 <p>Clone, deploy, configure. Your own oracle today.</p>
                 <p>Libraries and services.</p>
@@ -20,7 +20,7 @@
             </div>
         </div>
         <div class="col-md-6">
-            <div class="h-100 p-5 bg-dark text-white rounded-3">
+            <div class="h-100 p-5 rounded-3">
                 <h2>Feed your contracts</h2>
                 <div class="progress progress-striped active">
                     <div class="progress-bar progress-bar-success"

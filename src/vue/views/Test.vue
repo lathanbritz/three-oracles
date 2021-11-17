@@ -21,7 +21,7 @@
 <script>
     import $ from 'jquery'
     import { onUnmounted } from 'vue'
-    import { Client } from 'xrpl'
+    // import { Client } from 'xrpl'
 
     export default {
         name: "Test",
@@ -35,15 +35,15 @@
             }
         },
         async mounted() {
-            const client = new Client('wss://xrplcluster.com')
-            console.log('connecting')
-            await client.connect()
-            console.log('connected')
-            this.data = await client.request({command: 'server_info'})
-            console.log(this.data)
-            console.log('disconnecting')
-            await client.disconnect()
-            console.log('disconnected')
+            // const client = new Client('wss://xrplcluster.com')
+            // console.log('connecting')
+            // await client.connect()
+            // console.log('connected')
+            // this.data = await client.request({command: 'server_info'})
+            // console.log(this.data)
+            // console.log('disconnecting')
+            // await client.disconnect()
+            // console.log('disconnected')
         }
     }
 </script>
