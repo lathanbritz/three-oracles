@@ -75,10 +75,10 @@
             }
         },
         async mounted() {
-            socket = new WebSocket('ws://localhost:5000')
+            socket = new WebSocket('ws://65.21.226.245:5000')
             this.connectWebsocket()
             
-            const {data} = await this.axios.get('http://localhost:5000/api/v2/xumm-sign-in')
+            const {data} = await this.axios.get('http://65.21.226.245:5000/api/v2/xumm-sign-in')
             this.signin_request = data
             console.log(data)
         },
