@@ -2,4 +2,4 @@
 
 cd "`dirname "$0"`"
 
-vite --host &> ./log.txt
+yarn dev --host &> ./log.txt
