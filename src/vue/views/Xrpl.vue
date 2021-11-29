@@ -75,7 +75,7 @@
             }
         },
         async mounted() {
-            socket = new WebSocket('wss://panicbot:5000')
+            socket = new WebSocket('wss://panicbot.app:5000')
             this.connectWebsocket()
             
             const {data} = await this.axios.get('https://panicbot:5000/api/v2/xumm-sign-in')
