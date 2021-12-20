@@ -21,9 +21,9 @@
         "numeral": "^2.0.6",
         "vue": "^3.1.2",
         "vue-axios": "^3.3.7",
-        "vue-number-animation": "https://github.com/solancer/vue-animated-number.git",
         "vue-numerals": "^4.0.6",
         "vue-router": "^4.0.10",
+        "vue3-autocounter": "^1.0.6",
         "xrpl": "^2.0.0"
     },
     "devDependencies": {

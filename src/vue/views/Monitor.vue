@@ -29,17 +29,12 @@
                         style="width:0%">
                     </div>
                 </div>
+                
+
                 <ul class="list-group" v-for="oracle in oracle_data">
                     <li v-if="oracle.filteredMedian === undefined" class="list-group-item bg-purple">{{oracle.symbol}} <span class="float-end">-</span></li>
                     <li v-else class="list-group-item" :class="oracle.color_bg">{{oracle.symbol}} <span class="float-end">
-                        <number
-                            :ref="oracle.symbol"
-                            :from="oracle.previous"
-                            :to="oracle.filteredMedian"
-                            :format="theFormat"
-                            :duration="1"
-                            :delay="0"
-                            easing="Power1.easeOut"/>
+                        <vue3-autocounter ref='oracle.symbol' :startAmount='oracle.previous' :endAmount='oracle.filteredMedian' :duration='1' separator=',' decimalSeparator='.' :decimals='8' :autoinit='true' />
                         </span>
                     </li>
                 </ul>
@@ -47,14 +42,7 @@
                 <ul class="list-group" v-for="oracle in oracle_data_alts">
                     <li v-if="oracle.filteredMedian === undefined" class="list-group-item bg-purple">{{oracle.symbol}} <span class="float-end">-</span></li>
                     <li v-else class="list-group-item" :class="oracle.color_bg">{{oracle.symbol}} <span class="float-end">
-                        <number
-                            :ref="oracle.symbol"
-                            :from="oracle.previous"
-                            :to="oracle.filteredMedian"
-                            :format="theFormat"
-                            :duration="1"
-                            :delay="0"
-                            easing="Power1.easeOut"/>
+                        <vue3-autocounter ref='oracle.symbol' :startAmount='oracle.previous' :endAmount='oracle.filteredMedian' :duration='1' separator=',' decimalSeparator='.' :decimals='8' :autoinit='true' />
                         </span>
                     </li>
                 </ul>
@@ -82,6 +70,37 @@
             this.connectWebsocket()
         },
         methods : {
+animateValue(id, start, end, duration) {
+    // assumes integer values for start and end
+    
+    var obj = document.getElementById(id);
+    var range = end - start;
+    // no timer shorter than 50ms (not really visible any way)
+    var minTimer = 50;
+    // calc step time to show all interediate values
+    var stepTime = Math.abs(Math.floor(duration / range));
+    
+    // never go below minTimer
+    stepTime = Math.max(stepTime, minTimer);
+    
+    // get current time and calculate desired end time
+    var startTime = new Date().getTime();
+    var endTime = startTime + duration;
+    var timer;
+  
+    function run() {
+        var now = new Date().getTime();
+        var remaining = Math.max((endTime - now) / duration, 0);
+        var value = Math.round(end - (remaining * range));
+        obj.innerHTML = value;
+        if (value == end) {
+            clearInterval(timer);
+        }
+    }
+    
+    timer = setInterval(run, stepTime);
+    run();
+},
             progressBar() {
                 console.log('animate progressBar')
                 this.animate = false
