@@ -63,7 +63,7 @@
             }
         },
         async mounted() {
-            socket = new WebSocket('wss://panicbot.app:5000')
+            socket = new WebSocket('ws://panicbot.app:7000')
             this.connectWebsocket()
         },
         methods : {
