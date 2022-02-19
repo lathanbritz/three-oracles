@@ -115,31 +115,59 @@
             fetchData : function(data) {
                 if (data == null) { return {} }
 
+                let code = data.limited_amount.currency
+                if (code.length > 3) {
+                    code = this.currencyHexToUTF8(code)
+                }
+
                 this.ledger_index = data.ledger_index
                 const oracle = { 
-                    'symbol': data.limited_amount.currency,
+                    'symbol': code,
                     'filteredMedian': data.limited_amount.value,
                     'color_bg': 'bg-purple',
                     'meta': JSON.stringify(data.meta, undefined, 2)
                 }
             
-                
+                oracle.previous = 0
+                oracle.filteredMedian = oracle.filteredMedian * 1
                 if (this.oracle_data[oracle.symbol] != null) {
-                    if (oracle.filteredMedian < this.oracle_data[oracle.symbol].filteredMedian)  {
+                    oracle.previous = this.oracle_data[oracle.symbol].filteredMedian * 1
+
+                    if (oracle.filteredMedian < oracle.previous)  {
                         oracle.color_bg = 'bg-pink'
                     }
                     else {
                         oracle.color_bg = 'bg-green'
-                    }    
+                    }
                 }
-                if (!('previous' in oracle)) {
-                    oracle.previous = 0
-                }
-                console.log(oracle)
+
+                //console.log(oracle)
                 this.oracle_data[oracle.symbol] = oracle
             },
             theFormat(number) {
                 return number.toFixed(8)
+            },
+            currencyHexToUTF8(code){
+                if(code.length === 3)
+                    return code
+
+                let decoded = new TextDecoder()
+                    .decode(this.hexToBytes(code))
+                let padNull = decoded.length
+
+                while(decoded.charAt(padNull-1) === '\0')
+                    padNull--
+
+                return decoded.slice(0, padNull)
+            },
+            hexToBytes(hex){
+                let bytes = new Uint8Array(hex.length / 2)
+
+                for (let i = 0; i !== bytes.length; i++){
+                    bytes[i] = parseInt(hex.substr(i * 2, 2), 16)
+                }
+
+                return bytes
             }
         }
     }
